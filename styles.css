@@ -1,0 +1,227 @@
+:root {
+    --sidebarWidth: 14vw;
+    --logoAspectRatio: 3.8;
+    --logoHeight: calc(var(--sidebarWidth) * 0.6);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #fff;
+}
+
+body {
+    margin: 0;
+    background-color: #111;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #444;
+}
+
+p {
+    margin: 0;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.page_wrapper {
+    display: flex;
+}
+
+.left_side {
+    writing-mode:vertical-rl;
+    width: var(--sidebarWidth);
+    height: 100vh;
+    position: relative;
+}
+
+#joel-logo {
+    position: absolute;
+    top: 45px; /* add 15px for truth */
+    left: 50%;
+    transform: translate(-50%, 
+        calc((var(--logoAspectRatio) * var(--logoHeight) / 2) - 
+        (var(--logoHeight) / 2))
+        ) rotate(90deg);
+    height: var(--logoHeight);
+    width: auto;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    padding: 60px 45px 0 0;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #fff; 
+    border: none;
+    align-self: stretch;
+}
+
+.spacer1 {
+    width: 100%;
+    height: 10px;
+}
+
+.spacer2 {
+    width: 100%;
+    height: 60px;
+}
+
+.spacer3 {
+    width: 100%;
+    height: 100px;
+}
+
+.header {
+    height: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.header_container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+}
+
+.header_menu {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.navbar {
+    background-color: #111;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar_container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: center;
+}
+
+.navbar_menu {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.navbar_menu li {
+    font-weight: bold;
+}
+
+.content {
+    height: 500px;
+    width: 100%;
+    display: flex;
+}
+
+.photo_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+}
+
+.photo {
+    height: auto;
+    max-height: 80%;
+    width: auto;
+    max-width: 80%;
+    object-fit: contain;
+}
+
+.text_container {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+.box-button {
+    display: inline-block;
+    padding: 7px 15px;
+    background-color: #fff;
+    color: #111;
+    text-decoration: none;
+}
+
+.box-button:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+
+.page_end {
+    width: 100%;
+    height: 250px;
+    background-color: #fff;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 30px 30px 30px 45px;
+}
+
+.page_end p {
+    color: #111;
+    font-weight: bold;
+}
+
+#joel-logo-inverted {
+    margin-left: auto;
+    height: auto;
+    width: 17vw;
+    object-fit: contain;
+}
+
+.gallery_heading {
+    font-weight: bold;
+    margin: 0;
+}
+
+.gallery_grid {
+    display: flex;
+    gap: 60px 30px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 60px;
+}
+
+.gallery_grid img {
+    height: 400px;
+    width: auto;
+}
