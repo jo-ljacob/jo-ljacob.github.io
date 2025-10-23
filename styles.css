@@ -18,8 +18,10 @@ html {
 }
 
 body {
-    margin: 0;
+    margin: 0;  
     background-color: #111;
+    position: relative;
+    min-height: 100vh;
 }
 
 a {
@@ -42,25 +44,30 @@ h1 {
 
 .page_wrapper {
     display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
 }
 
-.left_side {
-    writing-mode:vertical-rl;
-    width: var(--sidebarWidth);
-    height: 100vh;
-    position: relative;
-}
 
 #joel-logo {
-    position: absolute;
-    top: 45px; /* add 15px for truth */
-    left: 50%;
-    transform: translate(-50%, 
-        calc((var(--logoAspectRatio) * var(--logoHeight) / 2) - 
-        (var(--logoHeight) / 2))
-        ) rotate(90deg);
+    position: fixed;
+    bottom: calc(var(--logoHeight)*1.1);
+    left: calc(var(--logoHeight)/1.5);
+    transform: translate(-50%, -50%) rotate(90deg);
+    transform-origin: center;
     height: var(--logoHeight);
     width: auto;
+    z-index: 99;
+}
+
+#right-sigil {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(var(--logoHeight)*2);
+    z-index: 100;
 }
 
 .joel_logo_mobile {
@@ -71,8 +78,10 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    flex: 1;
-    padding: 60px 45px 0 0;
+    width: 1000px; /* constant width */
+    max-width: 90vw;
+    padding: 45px;
+
 }
 
 .divider {
@@ -196,23 +205,30 @@ h1 {
 .page_end {
     width: 100%;
     height: 250px;
-    background-color: #fff;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
     padding: 30px 30px 30px 45px;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .page_end p {
-    color: #111;
+    color: #eee;
     font-weight: bold;
 }
 
-#joel-logo-inverted {
-    margin-left: auto;
+#end-logo {
+    display: none;
+}
+
+#endbar-sigil {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     height: auto;
-    width: 17vw;
-    object-fit: contain;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    z-index: 999;
 }
 
 .gallery_heading {
@@ -229,7 +245,7 @@ h1 {
 }
 
 .gallery_grid img {
-    height: 400px;
+    height: 350px;
     width: auto;
 }
 
@@ -252,8 +268,8 @@ h1 {
 }
 
 .modal-content {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
 }
 
@@ -270,21 +286,42 @@ h1 {
     color: #444;
 }
 
+@media (max-width: 1350px) {
+    .main {
+        width: 800px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .main {
+        width: 600px;
+    }
+    .content {
+        height: auto;
+        padding-bottom: 50px;
+    }
+}
+
 @media (max-width: 750px) {
-    .left_side {
+    #joel-logo {
         display: none;
     }
 
     .main {
-        padding: 45px 30px 0 30px;
+        padding: 35px 20px 0 20px;
     }
 
     .joel_logo_mobile {
         display: block;
+        margin-left: calc(-1*var(--logoHeight)*.17);
     }
 
     .joel_logo_mobile img {
         width: 60%;
+    }
+
+    #right-sigil {
+        width: calc(var(--logoHeight)*3);
     }
 
     .mobile_spacer {
@@ -295,19 +332,28 @@ h1 {
 
     .header {
         height: auto;
-        align-items: flex-start;
+        align-items: center;
     }
     
+    .header_container {
+        justify-content: flex-start;
+    }
+
     .header_menu {
         flex-direction: column;
-        align-items: flex-end;
+        align-items: flex-start;
         gap: 15px;
+    }
+
+    #top-bars {
+        display: none;
     }
 
     .navbar {
         height: auto;
         align-items: flex-start;
         position: relative;
+        background-color: transparent;
     }
     
     .navbar_menu {
@@ -317,7 +363,30 @@ h1 {
     }
 
     .content {
+        flex-direction: column;
+        align-items: center;
         height: auto;
-        padding-bottom: 30px;
+        padding-bottom: 50px;
+    }
+
+    .photo_container,
+    .text_container {
+        width: 100%;
+        height: auto;
+    }
+
+    .gallery_grid {
+        justify-content: center;
+    }
+
+    .page_end {
+        justify-content: space-between;
+    }
+
+    #end-logo {
+        display: flex;
+        height: auto;
+        width: 30vw;
+        object-fit: contain;
     }
 }
