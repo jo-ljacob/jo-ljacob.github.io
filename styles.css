@@ -308,7 +308,7 @@ h1 {
     }
 
     .main {
-        padding: 35px 20px 0 20px;
+        padding: 25px 10px 0 10px;
     }
 
     .joel_logo_mobile {
@@ -321,7 +321,7 @@ h1 {
     }
 
     #right-sigil {
-        width: calc(var(--logoHeight)*3);
+        width: calc(var(--logoHeight)*3.5);
     }
 
     .mobile_spacer {
