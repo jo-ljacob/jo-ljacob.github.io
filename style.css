@@ -122,15 +122,23 @@ a:hover {
 }
 
 .top-content ul {
-    margin-top: 80px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .footer-section-desktop {
+    display: flex;
+    flex-direction: column;
     opacity: 1;
 }
 
 .footer-section-mobile {
     opacity: 0;
+}
+
+#portrait {
+    display: block;
+    margin-bottom: 50px;
 }
 
 ul {
@@ -186,6 +194,7 @@ li p a.active {
     height: 320px;
     object-fit: cover;
     display: block;
+    cursor: pointer;
 }
 
 .modal {
@@ -286,6 +295,10 @@ li p a.active {
     .footer-section-mobile {
         opacity: 1;
         margin-bottom: 50px;
+    }
+
+    #portrait {
+        display: none;
     }
 
     .top-content ul {
