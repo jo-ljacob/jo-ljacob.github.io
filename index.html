@@ -90,7 +90,13 @@
                     </div>
 
                     <div class="footer-section-desktop">
-                        <img src="./images/portrait.png" id="portrait" />
+                        <div class="portrait-container">
+                            <img src="./images/portrait.jpg" id="portrait" />
+                            <img
+                                src="./images/portrait-dithered.png"
+                                id="portrait-dithered"
+                            />
+                        </div>
                         <p class="footer-links">
                             <a href="mailto:joelj@andrew.cmu.edu"
                                 >joelj@andrew.cmu.edu ↗ㅤ
@@ -111,6 +117,23 @@
 
             <div class="right-panel">
                 <div id="project-content" class="project-content"></div>
+            </div>
+        </div>
+
+        <div class="footer-section-mobile-portrait">
+            <div class="portrait-container">
+                <img
+                    src="./images/portrait-dithered.png"
+                    id="portrait-dithered-mobile"
+                />
+                <img src="./images/portrait.jpg" id="portrait-mobile" />
+            </div>
+        </div>
+
+        <div class="modal" id="image-modal">
+            <div class="modal-content">
+                <div class="modal-close"></div>
+                <img id="modal-image" src="" />
             </div>
         </div>
 

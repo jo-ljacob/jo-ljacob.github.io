@@ -62,12 +62,22 @@ projectLinks.forEach((link) => {
 
 document.addEventListener("click", (e) => {
     const img = e.target.closest(".image-grid img");
-    if (!img) return;
+    const portraitContainer = e.target.closest(".portrait-container");
+
+    if (!img && !portraitContainer) return;
 
     const modal = document.getElementById("image-modal");
     const modalImg = document.getElementById("modal-image");
 
-    modalImg.src = img.src;
+    if (portraitContainer) {
+        // Check if it's the mobile or desktop portrait
+        const portrait = document.getElementById("portrait");
+        const portraitMobile = document.getElementById("portrait-mobile");
+        modalImg.src = portrait ? portrait.src : portraitMobile.src;
+    } else {
+        modalImg.src = img.src;
+    }
+
     modal.classList.add("active");
 });
 
