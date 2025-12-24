@@ -138,7 +138,8 @@ a:hover {
 
 .footer-links {
     display: flex;
-    gap: 23px;
+    flex-wrap: wrap;
+    gap: 22px;
 }
 
 .portrait-container {
