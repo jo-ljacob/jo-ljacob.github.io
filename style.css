@@ -139,7 +139,9 @@ a:hover {
 #portrait {
     display: block;
     margin-bottom: 50px;
-    width: 382px;
+    width: 100%;
+    max-width: 382px;
+    height: auto;
 }
 
 ul {
