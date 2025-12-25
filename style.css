@@ -33,6 +33,14 @@ body {
     overflow-y: scroll;
 }
 
+/* Fix for iOS Safari background-attachment: fixed not working */
+@supports (-webkit-touch-callout: none) {
+    body {
+        background-attachment: scroll;
+        background-size: 100vw 100vh;
+    }
+}
+
 body::before {
     content: "";
     position: fixed;
@@ -104,6 +112,9 @@ p {
         sans-serif;
     font-size: 14px;
     line-height: 1.5;
+    /* Prevent iOS Safari from auto-enlarging text */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 a {
@@ -139,7 +150,7 @@ a:hover {
 .footer-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 22px;
+    gap: 4px 22px;
 }
 
 .portrait-container {
@@ -351,6 +362,8 @@ li p a.active {
         width: calc(100vw - 60px);
         max-width: none;
         margin: 0 auto;
+        /* Fix portrait clipping on mobile */
+        overflow: hidden;
     }
 
     .footer-section-mobile-portrait #portrait-mobile {
@@ -359,9 +372,11 @@ li p a.active {
 
     .footer-section-mobile-portrait #portrait-dithered-mobile {
         width: 100%;
-        max-width: none;
+        max-width: 100%;
         height: auto;
         display: block;
+        /* Ensure image fits within container */
+        object-fit: contain;
     }
 
     .top-content ul {
