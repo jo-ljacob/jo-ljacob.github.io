@@ -45,6 +45,10 @@ body::after {
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
+    margin: calc(env(safe-area-inset-top) * -1)
+        calc(env(safe-area-inset-right) * -1)
+        calc(env(safe-area-inset-bottom) * -1)
+        calc(env(safe-area-inset-left) * -1);
 }
 
 body::before {
@@ -83,6 +87,10 @@ body::before {
     );
     mask-repeat: no-repeat;
     mask-size: 100% 100%;
+    margin: calc(env(safe-area-inset-top) * -1)
+        calc(env(safe-area-inset-right) * -1)
+        calc(env(safe-area-inset-bottom) * -1)
+        calc(env(safe-area-inset-left) * -1);
 }
 
 .container {
@@ -368,10 +376,8 @@ li p a.active {
     .footer-section-mobile-portrait .portrait-container {
         width: 100%;
         max-width: none;
-        margin: 0 auto;
+        margin: 0;
         overflow: hidden;
-        padding: 0 30px;
-        box-sizing: border-box;
     }
 
     .footer-section-mobile-portrait #portrait-mobile {
