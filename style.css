@@ -20,24 +20,37 @@ html {
 
 body {
     background-color: black;
-    background-image: url("./images/background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     color: white;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     overflow-y: scroll;
+    position: relative;
 }
 
-/* Fix for iOS Safari background-attachment: fixed not working */
+/* Background layer that stays fixed to viewport */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; /* Use dynamic viewport height when available */
+    background-image: url("./images/background.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+/* Fix for iOS Safari - ensure background covers viewport height */
 @supports (-webkit-touch-callout: none) {
-    body {
-        background-attachment: scroll;
-        background-size: 100vw 100vh;
+    body::after {
+        background-size: auto 100vh;
+        background-size: auto 100dvh; /* Use dynamic viewport height when available */
+        background-position: center top;
     }
 }
 
@@ -362,7 +375,6 @@ li p a.active {
         width: calc(100vw - 60px);
         max-width: none;
         margin: 0 auto;
-        /* Fix portrait clipping on mobile */
         overflow: hidden;
     }
 
@@ -375,7 +387,6 @@ li p a.active {
         max-width: 100%;
         height: auto;
         display: block;
-        /* Ensure image fits within container */
         object-fit: contain;
     }
 
