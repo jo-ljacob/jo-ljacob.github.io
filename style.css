@@ -35,6 +35,8 @@ body::after {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100vw;
     height: 100vh;
     height: 100dvh;
@@ -50,6 +52,8 @@ body::before {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100vw;
     height: 100vh;
     height: 100dvh;
@@ -362,10 +366,12 @@ li p a.active {
     }
 
     .footer-section-mobile-portrait .portrait-container {
-        width: calc(100vw - 60px);
+        width: 100%;
         max-width: none;
         margin: 0 auto;
         overflow: hidden;
+        padding: 0 30px;
+        box-sizing: border-box;
     }
 
     .footer-section-mobile-portrait #portrait-mobile {
