@@ -29,7 +29,6 @@ body {
     position: relative;
 }
 
-/* Background layer that stays fixed to viewport */
 body::after {
     content: "";
     position: fixed;
@@ -37,21 +36,12 @@ body::after {
     left: 0;
     width: 100vw;
     height: 100vh;
-    height: 100dvh; /* Use dynamic viewport height when available */
+    height: 100dvh;
     background-image: url("./images/background.jpg");
     background-size: cover;
-    background-position: center top;
+    background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
-}
-
-/* Fix for iOS Safari - ensure background covers viewport height */
-@supports (-webkit-touch-callout: none) {
-    body::after {
-        background-size: auto 100vh;
-        background-size: auto 100dvh; /* Use dynamic viewport height when available */
-        background-position: center top;
-    }
 }
 
 body::before {
@@ -125,7 +115,6 @@ p {
         sans-serif;
     font-size: 14px;
     line-height: 1.5;
-    /* Prevent iOS Safari from auto-enlarging text */
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
