@@ -29,6 +29,7 @@ body {
     position: relative;
 }
 
+/* Background layer that stays fixed to viewport */
 body::after {
     content: "";
     position: fixed;
@@ -51,6 +52,7 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     pointer-events: none;
     z-index: 9999;
 
@@ -58,7 +60,6 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 
     -webkit-mask-image: linear-gradient(
         to bottom,
