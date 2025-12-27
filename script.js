@@ -4,24 +4,76 @@ let clickedPage = null;
 let currentHoverPage = null;
 let displayedPage = null;
 
+const projectCache = {};
+const imageCache = {};
+
+async function preloadProjects() {
+    const pages = Array.from(projectLinks).map((link) =>
+        link.getAttribute("data-page")
+    );
+
+    await Promise.all(
+        pages.map(async (page) => {
+            try {
+                const response = await fetch(`${page}.html`);
+                if (response.ok) {
+                    const html = await response.text();
+                    projectCache[page] = html;
+
+                    const imgSrcRegex = /src=["']([^"']+)["']/g;
+                    let match;
+                    const imagePromises = [];
+
+                    while ((match = imgSrcRegex.exec(html)) !== null) {
+                        const imgSrc = match[1];
+                        if (!imageCache[imgSrc]) {
+                            imagePromises.push(
+                                new Promise((resolve) => {
+                                    const img = new Image();
+                                    img.onload = () => {
+                                        imageCache[imgSrc] = img;
+                                        resolve();
+                                    };
+                                    img.onerror = resolve;
+                                    img.src = imgSrc;
+                                })
+                            );
+                        }
+                    }
+
+                    await Promise.all(imagePromises);
+                } else {
+                    projectCache[page] =
+                        "<p>Project content coming soon...</p>";
+                }
+            } catch {
+                projectCache[page] = "<p>Project content coming soon...</p>";
+            }
+        })
+    );
+}
+
+preloadProjects();
+
 async function loadProject(page) {
     if (displayedPage === page) return;
+
+    const previousPage = displayedPage;
     displayedPage = page;
 
-    try {
-        const response = await fetch(`${page}.html`);
-        const html = response.ok
-            ? await response.text()
-            : "<p>Project content coming soon...</p>";
+    const html = projectCache[page] || "<p>Loading...</p>";
 
+    if (previousPage === null) {
+        projectContent.innerHTML = html;
+        setTimeout(() => projectContent.classList.add("visible"), 10);
+    } else {
         projectContent.classList.remove("visible");
         setTimeout(() => {
-            projectContent.innerHTML = html;
-            projectContent.classList.add("visible");
-        }, 300);
-    } catch {
-        projectContent.innerHTML = "<p>Project content coming soon...</p>";
-        projectContent.classList.add("visible");
+            if (displayedPage === page) {
+                projectContent.innerHTML = html;
+                projectContent.classList.add("visible");
+            }
+        }, 200);
     }
 }
 
@@ -30,14 +82,21 @@ function clearContent() {
     displayedPage = null;
     projectContent.classList.remove("visible");
     setTimeout(() => {
-        projectContent.innerHTML = "";
-    }, 300);
+        if (displayedPage === null) {
+            projectContent.innerHTML = "";
+        }
+    }, 200);
 }
 
 function updateDisplay() {
-    if (currentHoverPage !== null) loadProject(currentHoverPage);
-    else if (clickedPage !== null) loadProject(clickedPage);
-    else clearContent();
+    const targetPage =
+        currentHoverPage !== null ? currentHoverPage : clickedPage;
+
+    if (targetPage !== null) {
+        loadProject(targetPage);
+    } else {
+        clearContent();
+    }
 }
 
 projectLinks.forEach((link) => {
@@ -70,7 +129,6 @@ document.addEventListener("click", (e) => {
     const modalImg = document.getElementById("modal-image");
 
     if (portraitContainer) {
-        // Check if it's the mobile or desktop portrait
         const portrait = document.getElementById("portrait");
         const portraitMobile = document.getElementById("portrait-mobile");
         modalImg.src = portrait ? portrait.src : portraitMobile.src;
