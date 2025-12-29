@@ -5,7 +5,7 @@
 
 @font-face {
     font-family: "JetBrainsMono";
-    src: url("./fonts/JetBrainsMono.ttf") format("truetype");
+    src: url("./fonts/JetBrainsMonoNerdFont-Regular.ttf") format("truetype");
 }
 
 * {
@@ -29,7 +29,6 @@ body {
     position: relative;
 }
 
-/* Background layer that stays fixed to viewport */
 body::after {
     content: "";
     position: fixed;
@@ -101,7 +100,7 @@ body::before {
 }
 
 .left-panel {
-    width: 482px;
+    width: 352px;
     height: 100vh;
     padding: 50px;
     display: flex;
@@ -115,6 +114,12 @@ body::before {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.top-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 h1 {
@@ -148,9 +153,11 @@ a:hover {
     opacity: 0.7;
 }
 
-.top-content ul {
-    margin-top: 50px;
-    margin-bottom: 50px;
+.top-content > ul {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .footer-section-desktop {
@@ -160,7 +167,7 @@ a:hover {
 }
 
 .footer-section-mobile {
-    opacity: 0;
+    display: none;
 }
 
 .footer-links {
@@ -169,11 +176,26 @@ a:hover {
     gap: 4px 22px;
 }
 
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.row .label {
+    flex: 0 0 auto;
+}
+
+.row a {
+    flex: 0 0 auto;
+}
+
 .portrait-container {
     position: relative;
     width: 100%;
     max-width: 382px;
-    margin-bottom: 50px;
+    margin-top: 50px;
     cursor: pointer;
 }
 
@@ -213,11 +235,11 @@ li p {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 12px 0;
+    padding: 10px 0;
 }
 
 li p a {
-    flex: 1;
+    flex: 0 0 auto;
     cursor: pointer;
 }
 
@@ -365,12 +387,21 @@ li p a.active {
         display: block;
     }
 
+    .top-content {
+        display: block;
+    }
+
+    li p {
+        padding: 8px 0;
+    }
+
     .footer-section-desktop {
         display: none;
     }
 
     .footer-section-mobile {
-        opacity: 1;
+        display: block;
+        margin-top: 30px;
         margin-bottom: 30px;
     }
 
@@ -400,9 +431,11 @@ li p a.active {
         object-fit: contain;
     }
 
-    .top-content ul {
+    .top-content > ul {
         margin-top: 0;
         margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 
     .right-panel {
