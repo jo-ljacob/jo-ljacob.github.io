@@ -174,7 +174,7 @@ li p a.active {
     display: grid;
     grid-template-columns: repeat(auto-fill, 240px);
     gap: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 2em;
 }
 
 .image-grid img {
@@ -185,6 +185,10 @@ li p a.active {
     cursor: pointer;
 }
 
+.mobile-bar {
+    display: none;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -192,7 +196,9 @@ li p a.active {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     z-index: 10000;
     justify-content: center;
     align-items: center;
@@ -313,19 +319,31 @@ li p a.active {
 
     .right-panel {
         width: 100%;
-        padding: 20px;
-        padding-left: 20px;
+        padding: 0 20px 20px 20px;
         justify-content: flex-start;
     }
 
-    .image-grid {
-        grid-template-columns: 1fr 1fr;
-        justify-content: stretch;
+    .project-content {
+        max-width: none;
     }
 
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 2em;
+        box-sizing: border-box;
+    }
+    
     .image-grid img {
         width: 100%;
-        height: auto;
-        aspect-ratio: 3/4;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 3 / 4;
+        display: block;
+    }
+
+    .mobile-bar {
+        display: block;
     }
 }
