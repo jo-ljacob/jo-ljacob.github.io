@@ -281,7 +281,7 @@ li p a.active {
     .left-panel {
         width: 100%;
         min-height: auto;
-        padding: 30px;
+        padding: 20px;
         position: relative;
         height: auto;
     }
@@ -313,8 +313,8 @@ li p a.active {
 
     .right-panel {
         width: 100%;
-        padding: 30px;
-        padding-left: 30px;
+        padding: 20px;
+        padding-left: 20px;
         justify-content: flex-start;
     }
 
