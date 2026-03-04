@@ -111,7 +111,7 @@ a:hover {
     margin-bottom: 2em;
 }
 
-.top-content > ul {
+.contact-spacer {
     margin-bottom: 2em;
 }
 
@@ -251,6 +251,14 @@ li p a.active {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+.project-role {
+    font-size: 16px;
+    opacity: 0.7;
+    margin-bottom: 2em;
+    font-style: italic;
+    text-align: right;
+}
+
 .project-info {
     margin-top: 0;
 }
@@ -270,6 +278,188 @@ li p a.active {
 @media (max-width: 1280px) {
     .project-content {
         max-width: 500px;
+    }
+}
+
+@media print {
+    @page {
+        size: letter;
+        margin: 0;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+        display: block !important;
+        overflow: visible !important;
+    }
+
+    .print-page,
+    .print-page * {
+        color: black !important;
+    }
+
+    .print-page a {
+        text-decoration: none;
+    }
+
+    .container,
+    .modal,
+    .download-btn {
+        display: none !important;
+    }
+
+    .print-pages {
+        display: block !important;
+    }
+
+    .print-page {
+        width: 8.5in;
+        min-height: 11in;
+        padding: 0.75in 0.75in 0.6in 0.75in;
+        box-sizing: border-box;
+        page-break-after: always;
+        break-after: page;
+        background: white !important;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .print-page:last-child {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+
+    .print-footer {
+        position: absolute;
+        bottom: 0.3in;
+        right: 0.75in;
+        font-family: "FiraCode", monospace;
+        font-size: 10pt;
+    }
+
+    .print-footer strong {
+        font-weight: bold;
+    }
+
+    .print-cover {
+        justify-content: flex-start;
+        padding-top: 4.54in;
+    }
+
+    .print-cover-name {
+        font-family: "Cellofy", "Times New Roman", Times, serif;
+        font-size: 35pt;
+        font-style: italic;
+        line-height: 0.85;
+        margin-bottom: 16px;
+    }
+
+    .print-cover-tagline {
+        font-family: "FiraCode", monospace;
+        font-size: 10pt;
+        line-height: 1.5;
+        opacity: 0.7;
+        margin-top: 1em;
+        max-width: 340px;
+    }
+
+    .print-cover-contact {
+        font-family: "FiraCode", monospace;
+        font-size: 10pt;
+        line-height: 1.8;
+    }
+
+    .print-divider {
+        width: 100%;
+        height: 2px;
+        background: black !important;
+        opacity: 0.3;
+        margin: 0.7em 0;
+    }
+
+    .print-divider-half {
+        width: 50%;
+    }
+
+    .print-cover-contact-line {
+        font-family: "FiraCode", monospace;
+        font-size: 10pt;
+        line-height: 1.8;
+    }
+
+    .print-subheading {
+        font-family: "FiraCode", monospace;
+        font-size: 10pt;
+        opacity: 0.7;
+        margin-bottom: 6px;
+        letter-spacing: 0.05em;
+    }
+
+    .print-section-title {
+        font-family: "FiraCode", monospace;
+        font-size: 16pt;
+        font-style: normal;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        line-height: 1;
+        margin-bottom: 10px;
+    }
+
+    .print-cover-eyebrow {
+        font-family: "FiraCode", monospace;
+        font-size: 10pt;
+        opacity: 0.7;
+        letter-spacing: 0.05em;
+        margin-bottom: 16px;
+    }
+
+    .print-project-role {
+        font-family: "FiraCode", monospace;
+        font-size: 10pt;
+        font-style: italic;
+        opacity: 0.7;
+        margin-bottom: 8px;
+    }
+
+    .print-toc-row {
+        display: flex;
+        justify-content: space-between;
+        font-family: "FiraCode", monospace;
+        font-size: 10pt;
+        line-height: 1.8;
+    }
+
+    .print-image-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        flex-shrink: 0;
+    }
+
+    .print-image-grid img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .print-section {
+        margin-bottom: 0;
+    }
+
+    .print-section p {
+        font-family: "FiraCode", monospace;
+        font-size: 10pt;
+        line-height: 1.5;
     }
 }
 
