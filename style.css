@@ -280,6 +280,11 @@ li p a.active {
     .project-content {
         max-width: 500px;
     }
+
+    .project-role {
+        flex-direction: column;
+        gap: 0.4em;
+    }
 }
 
 @media print {

@@ -253,6 +253,10 @@ function buildPrintPages() {
     });
 }
 
+function isMobile() {
+    return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+}
+
 window.addEventListener("beforeprint", () => {
     document.title = "Joel_Jacob_Portfolio";
 });
@@ -261,13 +265,21 @@ window.addEventListener("afterprint", () => {
     document.title = "Joel Jacob";
 });
 
-document.getElementById("download-pdf-btn").addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    document.title = "Joel_Jacob_Portfolio";
-    preloadPromise.then(() => {
-        buildPrintPages();
-        window.print();
-        setTimeout(() => { document.title = "Joel Jacob"; }, 1000);
+const pdfBtn = document.getElementById("download-pdf-btn");
+
+if (isMobile()) {
+    pdfBtn.href = "./Joel_Jacob_Portfolio.pdf";
+    pdfBtn.target = "_blank";
+    pdfBtn.rel = "noopener noreferrer";
+} else {
+    pdfBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        document.title = "Joel_Jacob_Portfolio";
+        preloadPromise.then(() => {
+            buildPrintPages();
+            window.print();
+            setTimeout(() => { document.title = "Joel Jacob"; }, 1000);
+        });
     });
-});
+}
