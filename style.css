@@ -125,7 +125,7 @@ body {
 }
 
 .project-link {
-  font-size: 14px; /* was 13px */
+  font-size: 14px;
   letter-spacing: 0.02em;
   color: #ffffff;
   opacity: 0.7;
@@ -144,7 +144,7 @@ body {
 .divider {
   color: #ffffff;
   opacity: 0.4;
-  font-size: 14px; /* was 13px — matches the links beside it */
+  font-size: 14px;
 }
 
 .footer-links {
@@ -159,7 +159,7 @@ body {
 }
 
 .footer-link {
-  font-size: 14px; /* was 13px */
+  font-size: 14px;
   letter-spacing: 0.02em;
   color: #ffffff;
   text-decoration: none;
@@ -341,6 +341,16 @@ body {
   .navbar {
     align-items: flex-start;
     padding: 16px;
+  }
+
+  /* Slightly smaller ASCII art on mobile than the 11px desktop size. */
+  .logo-mobile-line {
+    font-size: 9px;
+  }
+
+  .logo-mobile {
+    left: -2ch;
+    gap: 5px;
   }
 
   .nav-right {
