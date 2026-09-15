@@ -1,150 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-        />
-        <title>Joel Jacob</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="icon" href="./images/favicon.png" type="image/png" />
-    </head>
-    <body>
-        <div class="container">
-            <div class="left-panel">
-                <div class="content-wrapper">
-                    <div class="top-content">
-                        <h1>
-                            <a href="./index.html">JOEL<br />JACOB</a>
-                        </h1>
-                        <div class="divider"></div>
-                        <p class="tagline">
-                            Mechanical engineering student at Carnegie Mellon 
-                            University interested in robotics, hardware development, 
-                            and real-world engineering challenges.
-                        </p>
-                        <p class="resume-link"></p>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>joel jacob</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-                        <div class="divider"></div>
-                        <p class="subheading">PROJECTS</p>
-                        <ul>
-                            <li>
-                                <p>
-                                    <a
-                                        href="#"
-                                        class="project-link"
-                                        data-page="lunabotics"
-                                        >NASA Lunabotics Challenge</a
-                                    >
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a
-                                        href="#"
-                                        class="project-link"
-                                        data-page="hip-exo"
-                                        >Hip Exoskeleton</a
-                                    >
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a
-                                        href="#"
-                                        class="project-link"
-                                        data-page="combat-robot"
-                                        >National Havoc Robot League</a
-                                    >
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a
-                                        href="#"
-                                        class="project-link"
-                                        data-page="first-robotics"
-                                        >FIRST Robotics Competition</a
-                                    >
-                                </p>
-                            </li>
-                        </ul>
-                        <p class="resume-link"></p>
-                    </div>
+<nav class="navbar">
+  <!-- Desktop: single-line ascii art. Replace with your own; keep the <pre> tag. -->
+  <pre class="logo logo-desktop" aria-label="Name">
+     __    ______    ______    __              __    ______    ______    ______    ______    
+    /\ \  /\  __ \  /\  ___\  /\ \            /\ \  /\  __ \  /\  ___\  /\  __ \  /\  == \   
+   _\_\ \ \ \ \/\ \ \ \  __\  \ \ \____      _\_\ \ \ \  __ \ \ \ \____ \ \ \/\ \ \ \  __<   
+  /\_____\ \ \_____\ \ \_____\ \ \_____\    /\_____\ \ \_\ \_\ \ \_____\ \ \_____\ \ \_____\ 
+  \/_____/  \/_____/  \/_____/  \/_____/    \/_____/  \/_/\/_/  \/_____/  \/_____/  \/_____/                                                                                            
+  </pre>
 
-                    <div class="divider"></div>
-                    <p class="subheading">CONTACT</p>
-                    <ul>
-                        <li>
-                            <p class="row">
-                                <a href="mailto:joelj@andrew.cmu.edu">
-                                    joelj@andrew.cmu.edu ↗
-                                </a>
-                            </p>
-                        </li>
-                        <li>
-                            <p class="row">
-                                <a
-                                    href="https://www.linkedin.com/in/joeljacob2006/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    linkedin.com/in/joeljacob2006 ↗
-                                </a>
-                            </p>
-                        </li>
-                    </ul>
-                    <p class="contact-spacer"></p>
+  <!-- Mobile: same art split into two stacked, left-justified lines so it fits the width. -->
+  <div class="logo logo-mobile" aria-label="Name">
+    <pre class="logo-mobile-line">
+       __    ______    ______    __
+      /\ \  /\  __ \  /\  ___\  /\ \  
+     _\_\ \ \ \ \/\ \ \ \  __\  \ \ \____
+    /\_____\ \ \_____\ \ \_____\ \ \_____\
+    \/_____/  \/_____/  \/_____/  \/_____/</pre>
+    <pre class="logo-mobile-line">
+       __    ______    ______    ______    ______    
+      /\ \  /\  __ \  /\  ___\  /\  __ \  /\  == \   
+     _\_\ \ \ \  __ \ \ \ \____ \ \ \/\ \ \ \  __<   
+    /\_____\ \ \_\ \_\ \ \_____\ \ \_____\ \ \_____\ 
+    \/_____/  \/_/\/_/  \/_____/  \/_____/  \/_____/      
+    </pre>
+  </div>
 
-                    <div class="divider"></div>
-                    <p class="subheading">DOWNLOAD</p>
-                    <ul>
-                        <li>
-                            <p>
-                                <a
-                                    href="./Joel_Jacob_Resume.pdf"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Resume ↓
-                                </a>
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <a href="#" id="download-pdf-btn">Portfolio ↓</a>
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+  <!-- Desktop nav: project names on top, resume/email/linkedin stacked bottom-right -->
+  <div class="nav-right">
+    <ul class="project-nav">
+      <li class="project-link active" data-project="1">Lunar Excavator Robot</li>
+      <li class="divider">|</li>
+      <li class="project-link" data-project="2">Hip Exoskeleton</li>
+      <li class="divider">|</li>
+      <li class="project-link" data-project="3">Combat Robot</li>
+      <li class="divider">|</li>
+      <li class="project-link" data-project="4">FRC Robot</li>
+    </ul>
 
-            <div class="right-panel">
-                <div id="project-content" class="project-content"></div>
-            </div>
-        </div>
+    <div class="footer-links">
+      <a class="footer-link" href="Joel_Jacob_Resume.pdf" download>Resume ↓</a>
+      <a class="footer-link" href="mailto:joelj@andrew.cmu.edu">joelj[at]andrew.cmu.edu ↗</a>
+      <a class="footer-link" href="https://linkedin.com/in/joeljacob2006" target="_blank" rel="noopener">in/joeljacob2006 ↗</a>
+    </div>
+  </div>
 
-        <div class="modal" id="image-modal">
-            <div class="modal-content">
-                <div class="modal-close"></div>
-               
-                <img id="modal-image" src="" />
-            </div>
-        </div>
+  <!-- Mobile: hamburger toggle, sits in the space freed by the split ascii art -->
+  <button class="hamburger" id="hamburger" aria-label="menu" aria-expanded="false" aria-controls="mobile-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
 
-        
-        <div class="print-pages" style="display:none;" id="print-pages"></div>
-        <div id="print-cover-data" style="display:none;"
-            data-eyebrow="ENGINEERING PORTFOLIO"
-            data-phone="914-350-0775"
-            data-education="BS in Mechanical Engineering"
-            data-institution="Carnegie Mellon University"
-            data-graduation="Expected May 2027"
-            data-website="https://joel-jacob.com"
-            data-website-label="joel-jacob.com"
-        ></div>
+<!-- Mobile full-screen menu: projects + resume/email/linkedin -->
+<div class="mobile-menu" id="mobile-menu">
+  <ul class="mobile-project-nav">
+    <li class="project-link active" data-project="1">Lunar Excavator Robot</li>
+    <li class="project-link" data-project="2">Hip Exoskeleton</li>
+    <li class="project-link" data-project="3">Combat Robot</li>
+    <li class="project-link" data-project="4">FRC Robot</li>
+  </ul>
 
-        <script src="./script.js"></script>
-    </body>
+  <div class="mobile-footer-links">
+    <a class="footer-link" href="Joel_Jacob_Resume.pdf" download>Resume ↓</a>
+    <a class="footer-link" href="mailto:joelj@andrew.cmu.edu">joelj[at]andrew.cmu.edu ↗</a>
+    <a class="footer-link" href="https://linkedin.com/in/joeljacob2006" target="_blank" rel="noopener">in/joeljacob2006 ↗</a>
+  </div>
+</div>
+
+<main class="carousel-viewport">
+  <div class="carousel-track" id="carousel-track">
+    <!-- Slides are injected by script.js based on the PROJECTS data below -->
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
 </html>
