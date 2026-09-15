@@ -14,9 +14,9 @@
 
 @font-face {
   font-family: 'SGrIosevka';
-  src: url('fonts/SGr-Iosevka-Regular.woff2') format('woff2'),
-       url('fonts/SGr-Iosevka-Regular.woff') format('woff'),
-       url('fonts/SGr-Iosevka-Regular.ttf') format('truetype');
+  src: url('fonts/SGrIosevka-Regular.woff2') format('woff2'),
+       url('fonts/SGrIosevka-Regular.woff') format('woff'),
+       url('fonts/SGrIosevka-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -125,7 +125,7 @@ body {
 }
 
 .project-link {
-  font-size: 13px;
+  font-size: 14px; /* was 13px */
   letter-spacing: 0.02em;
   color: #ffffff;
   opacity: 0.7;
@@ -144,7 +144,7 @@ body {
 .divider {
   color: #ffffff;
   opacity: 0.4;
-  font-size: 13px;
+  font-size: 14px; /* was 13px — matches the links beside it */
 }
 
 .footer-links {
@@ -159,7 +159,7 @@ body {
 }
 
 .footer-link {
-  font-size: 13px;
+  font-size: 14px; /* was 13px */
   letter-spacing: 0.02em;
   color: #ffffff;
   text-decoration: none;
@@ -299,12 +299,7 @@ body {
 }
 
 /* ============================================
-   BELOW 1300px: swap single-line ASCII art for
-   the stacked two-line version. The two-line art
-   carries 2 extra leading spaces on every line,
-   so nudge it left by 2ch to keep its visible
-   left edge in the same place as the single-line
-   version.
+   BELOW 1300px: stacked ASCII art
    ============================================ */
 
 @media (max-width: 1300px) {
@@ -317,7 +312,7 @@ body {
     flex-direction: column;
     gap: 6px;
     position: relative;
-    left: -2ch; /* cancels the 2-char extra indent of the stacked art */
+    left: -2ch; /* cancels the extra indent of the stacked art */
   }
 }
 
@@ -325,7 +320,7 @@ body {
    DESKTOP: full-screen fixed carousel
    ============================================ */
 
-@media (min-width: 769px) {
+@media (min-width: 1001px) {
   .carousel-viewport {
     position: fixed;
     inset: 0;
@@ -342,7 +337,7 @@ body {
    RESPONSIVE (mobile)
    ============================================ */
 
-@media (max-width: 950px) {
+@media (max-width: 1000px) {
   .navbar {
     align-items: flex-start;
     padding: 16px;
