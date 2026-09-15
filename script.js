@@ -1,18 +1,56 @@
 /* ============================================
    PROJECT DATA
-   Each project points at a folder. The script
-   auto-discovers every image/video inside it.
+   Media is hardcoded per project. type is
+   'image' or 'video'; src is the full path.
    ============================================ */
 
 const PROJECTS = {
-  1: { name: "Lunar Excavator Robot", folder: "media/lunar"  },
-  2: { name: "Hip Exoskeleton",       folder: "media/exo"    },
-  3: { name: "Combat Robot",          folder: "media/combat" },
-  4: { name: "FRC Robot",             folder: "media/first"  },
+  1: {
+    name: "Lunar Excavator Robot",
+    media: [
+      { type: "video", src: "media/lunar/1.mp4",  label: "Lunar Excavator Robot — 1" },
+      { type: "image", src: "media/lunar/2.png",  label: "Lunar Excavator Robot — 2" },
+      { type: "image", src: "media/lunar/3.jpg",  label: "Lunar Excavator Robot — 3" },
+      { type: "image", src: "media/lunar/4.jpg",  label: "Lunar Excavator Robot — 4" },
+      { type: "image", src: "media/lunar/5.jpg",  label: "Lunar Excavator Robot — 5" },
+      { type: "image", src: "media/lunar/6.jpeg", label: "Lunar Excavator Robot — 6" },
+      { type: "image", src: "media/lunar/7.png",  label: "Lunar Excavator Robot — 7" },
+      { type: "image", src: "media/lunar/8.png",  label: "Lunar Excavator Robot — 8" },
+      { type: "image", src: "media/lunar/9.jpg",  label: "Lunar Excavator Robot — 9" },
+    ],
+  },
+  2: {
+    name: "Hip Exoskeleton",
+    media: [
+      { type: "image", src: "media/exo/1.png", label: "Hip Exoskeleton — 1" },
+      { type: "image", src: "media/exo/2.jpg", label: "Hip Exoskeleton — 2" },
+      { type: "image", src: "media/exo/3.png", label: "Hip Exoskeleton — 3" },
+      { type: "image", src: "media/exo/4.jpg", label: "Hip Exoskeleton — 4" },
+      { type: "image", src: "media/exo/5.png", label: "Hip Exoskeleton — 5" },
+      { type: "image", src: "media/exo/6.png", label: "Hip Exoskeleton — 6" },
+    ],
+  },
+  3: {
+    name: "Combat Robot",
+    media: [
+      { type: "video", src: "media/combat/1.mp4",  label: "Combat Robot — 1" },
+      { type: "image", src: "media/combat/2.jpg",  label: "Combat Robot — 2" },
+      { type: "image", src: "media/combat/3.png",  label: "Combat Robot — 3" },
+      { type: "image", src: "media/combat/4.jpg",  label: "Combat Robot — 4" },
+      { type: "image", src: "media/combat/5.jpg",  label: "Combat Robot — 5" },
+      { type: "image", src: "media/combat/6.png",  label: "Combat Robot — 6" },
+      { type: "image", src: "media/combat/7.jpeg", label: "Combat Robot — 7" },
+    ],
+  },
+  4: {
+    name: "FRC Robot",
+    media: [
+      { type: "image", src: "media/first/1.png", label: "FRC Robot — 1" },
+      { type: "image", src: "media/first/2.jpg", label: "FRC Robot — 2" },
+      { type: "image", src: "media/first/3.jpg", label: "FRC Robot — 3" },
+    ],
+  },
 };
-
-const IMAGE_EXT = /\.(jpe?g|png|gif|webp|avif|bmp|svg)$/i;
-const VIDEO_EXT = /\.(mp4|webm|mov|m4v|ogv)$/i;
 
 const CROSSFADE_MS = 400; // keep in sync with .carousel-track transition
 
@@ -23,9 +61,8 @@ const CROSSFADE_MS = 400; // keep in sync with .carousel-track transition
 let selectedProject = 1; // changes ONLY on click; drives .active
 let shownProject    = 1; // what's currently on screen (selected or hovered)
 let activeIndex = 0;
-let media = [];
+let media = PROJECTS[selectedProject].media;
 
-const mediaCache = {};
 let hoverTimeout = null;
 let isCrossfading = false;
 
@@ -46,65 +83,6 @@ const mobileMenu = document.getElementById("mobile-menu");
 
 function isMobile() {
   return window.matchMedia("(max-width: 768px)").matches;
-}
-
-/* ============================================
-   MEDIA DISCOVERY
-   ============================================ */
-
-function naturalSort(a, b) {
-  return a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" });
-}
-
-function toMediaItem(folder, filename) {
-  const isVideo = VIDEO_EXT.test(filename);
-  return {
-    type: isVideo ? "video" : "image",
-    src: `${folder}/${filename}`,
-    label: decodeURIComponent(filename),
-  };
-}
-
-async function discoverMedia(folder) {
-  try {
-    const res = await fetch(folder + "/");
-    if (res.ok) {
-      const html = await res.text();
-      const doc = new DOMParser().parseFromString(html, "text/html");
-      const files = [...doc.querySelectorAll("a")]
-        .map((a) => a.getAttribute("href"))
-        .filter((href) => href && (IMAGE_EXT.test(href) || VIDEO_EXT.test(href)))
-        .map((href) => decodeURIComponent(href.split("/").pop().split("?")[0]))
-        .filter((name, i, arr) => arr.indexOf(name) === i);
-
-      if (files.length) {
-        return files.sort(naturalSort).map((name) => toMediaItem(folder, name));
-      }
-    }
-  } catch (_) {
-    /* fall through to manifest */
-  }
-
-  try {
-    const res = await fetch(`${folder}/manifest.json`);
-    if (res.ok) {
-      const list = await res.json();
-      if (Array.isArray(list) && list.length) {
-        return list.sort(naturalSort).map((name) => toMediaItem(folder, name));
-      }
-    }
-  } catch (_) {
-    /* nothing found */
-  }
-
-  return [];
-}
-
-async function getMedia(folder) {
-  if (!mediaCache[folder]) {
-    mediaCache[folder] = await discoverMedia(folder);
-  }
-  return mediaCache[folder];
 }
 
 /* ============================================
@@ -236,7 +214,7 @@ function goTo(index) {
   updatePositions();
 }
 
-async function showProject(id) {
+function showProject(id) {
   if (id === shownProject || isCrossfading) return;
 
   const incomingTrack = activeTrack === trackA ? trackB : trackA;
@@ -245,8 +223,8 @@ async function showProject(id) {
   isCrossfading = true;
   shownProject = id;
   activeIndex = 0;
+  media = PROJECTS[id].media;
 
-  media = await getMedia(PROJECTS[id].folder);
   buildSlides(incomingTrack);
 
   void incomingTrack.offsetWidth;
@@ -389,10 +367,5 @@ window.addEventListener("resize", updatePositions);
    INIT
    ============================================ */
 
-(async function init() {
-  await Promise.all(Object.values(PROJECTS).map((p) => getMedia(p.folder)));
-
-  media = mediaCache[PROJECTS[selectedProject].folder] || [];
-  shownProject = selectedProject;
-  buildSlides(activeTrack);
-})();
+media = PROJECTS[selectedProject].media;
+buildSlides(activeTrack);
