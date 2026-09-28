@@ -22,12 +22,13 @@ const PROJECTS = {
   2: {
     name: "Hip Exoskeleton",
     media: [
-      { type: "image", src: "media/exo/1.png", label: "Hip Exoskeleton — 1" },
-      { type: "image", src: "media/exo/2.jpg", label: "Hip Exoskeleton — 2" },
-      { type: "image", src: "media/exo/3.png", label: "Hip Exoskeleton — 3" },
-      { type: "image", src: "media/exo/4.jpg", label: "Hip Exoskeleton — 4" },
-      { type: "image", src: "media/exo/5.png", label: "Hip Exoskeleton — 5" },
+      { type: "video", src: "media/exo/1.mov", label: "Hip Exoskeleton — 1" },
+      { type: "image", src: "media/exo/2.png", label: "Hip Exoskeleton — 2" },
+      { type: "image", src: "media/exo/3.jpg", label: "Hip Exoskeleton — 3" },
+      { type: "image", src: "media/exo/4.png", label: "Hip Exoskeleton — 4" },
+      { type: "image", src: "media/exo/5.jpg", label: "Hip Exoskeleton — 5" },
       { type: "image", src: "media/exo/6.png", label: "Hip Exoskeleton — 6" },
+      { type: "image", src: "media/exo/7.png", label: "Hip Exoskeleton — 7" },
     ],
   },
   3: {
